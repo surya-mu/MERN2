@@ -1,0 +1,54 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JS Task4</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
+
+    </head>
+    <body>
+        <script>
+            function CalculateDate(){
+                var date = new Date();
+                var dates = date.getDate();
+                var month = date.getMonth();
+
+                document.getElementById("date").innerHTML=`${date}`;
+                console.log(dates);
+            }
+
+
+            function CalculateDateAgain(){
+
+                var thedate = new Date();
+                const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+                let name = month[thedate.getMonth()];
+
+
+                let year = thedate.getFullYear();
+                let day = thedate.getDate();
+
+
+                document.getElementById("time").innerHTML=`${day}/${name}/${year}`;
+
+
+
+            }
+        </script>
+
+
+        <body>
+            <center>
+                <br><br><br><br><br><br><br>
+            <button class="btn btn-outline-success" type="button" onclick="CalculateDateAgain()">Get Date</button>
+            <p class="h6" id="time"></p>
+            <br><br><br>
+            <button class="btn btn-outline-success" type="button" onclick="CalculateDate()">Get Time</button>
+            <p class="h6 my-2" id="date"></p>
+            </center>
+
+        </body>
+    </body>
+    </html>

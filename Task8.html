@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Task2</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
+
+<body>
+
+
+    <script>
+        function alpha()
+        {
+        var str = document.getElementById("string").value;
+
+        var arr = str.split('');
+        console.log(str);
+        arr = arr.sort();
+        str= arr.join('');
+
+        console.log(arr);
+        document.getElementById("Result").innerText=`${str}`;
+        }
+
+    </script>
+    
+
+    <center>
+        <p class="display-5">Convert a string to it's alphabetical ordered string using .js</p>
+        <form action="" class="my-5">
+            <label for="string" class="pt-5 mb-2">Enter Input String:</label>
+            <input type="text" class="form-check" name="string" id="string">
+            <button type="button" class="btn-outline-danger mt-4" onclick="alpha()">Get String</button>
+            <br><br>
+            Result
+            <textarea type="text" class="form-check" id="Result"></textarea>
+
+        </form>
+    </center>
+
+
+
+
+</body>
+</html>

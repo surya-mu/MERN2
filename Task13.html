@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Animation</title>
+    <style>
+        #train-container {
+            position: relative;
+            width: 100%; /* Adjusted width to fill the entire page */
+            height: 100px;
+            overflow: hidden;
+        }
+
+        #train {
+            position: absolute;
+            top: 0;
+            left: -200px; /* Initially off-screen to the left */
+            transition: left 4s linear;
+        }
+
+        #start-button, #stop-button {
+            margin-top: 20px;
+	    margin-left: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="train-container">
+        <img id="train" src="https://www.pngitem.com/pimgs/m/57-578225_28-collection-of-train-carriage-clipart-clip-art.png" alt="Train" width="200" height="100">
+    </div>
+    <button id="start-button" onclick="startTrain()">Start</button>
+    <button id="stop-button" onclick="stopTrain()">Stop</button>
+
+    <script>
+        function startTrain() {
+            const train = document.getElementById('train');
+	    train.style.opacity = '1.0';
+            train.style.left = '100%'; // Move the train to the right edge of the page
+
+        }
+
+        function stopTrain() {
+            const train = document.getElementById('train');
+	    train.style.opacity = '0.0';
+            train.style.left = '-500px'; // Reset the train position	
+	    
+        }
+    </script>
+</body>
+</html>

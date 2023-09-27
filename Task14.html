@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Task8</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .gradient-bg {
+            background-image: linear-gradient(180deg, #F9F7C4, #D575BC);
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .error-message {
+            color: red;
+        }
+        .good-message {
+            color: green;
+        }
+        .center-button {
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="gradient-bg">
+
+    <center><h2>Registration Form</h2></center>
+    <center>
+    <table>
+        <form>
+         <div class="col-md-3 mt-3">
+        <tr>
+            <th class="h"><label for="FirstName">First Name</label></th>
+            <td>
+                <input class="form-control mt-3" name="FirstName" type="text" id="first-name" onkeyup="validateFirstName()">
+                <div class="error-message" id="error-first-name"></div>
+            </td>
+        </tr>
+    </div>
+        <div class="col-md-3">
+        <tr>
+            <th class="h"><label for="LastName">Last Name</label></th>
+            <td>
+                <input class="form-control mt-3" name="LastName" type="text" id="last-name" onkeyup="validateLastName()">
+                <div class="error-message" id="error-last-name"></div>
+            </td>
+        </tr>
+    </div>
+    <div class="col-md-3">
+        <tr>
+            <th class="h"><label for="Email">Email</label></th>
+            <td>
+                <input class="form-control mt-3" name="Email" type="email" id="email" placeholder="example@example.com" onkeyup="validateEmail()">
+                <div class="error-message" id="error-email"></div>
+            </td>
+        </tr>
+    </div>
+    <div class="col-md-3">
+        <tr>
+            <th class="h"><label for="Password">Password</label></th>
+            <td>
+                <input class="form-control mt-3" name="Password" id="password" type="password" onkeyup="validatePassword()">
+                <div class="error-message" id="error-password"></div>
+                <div class="good-message" id="password-strength"></div>
+            </td>
+        </tr>
+    </div>
+    <div class="col-md-3">
+        <tr>
+            <th class="h"><label for="RePassword">Re-Password</label></th>
+            <td>
+                <input class="form-control mt-3" name="RePassword" id="repassword" type="password" onkeyup="validateRePassword()">
+                <div class="error-message" id="error-repassword"></div>
+                <div class="good-message" id="repassword-match"></div>
+            </td>
+        </tr>
+    </div>
+    <div class="col-md-3">
+        <tr>
+            <th class="h"><label for="Age">Age</label></th>
+            <td>
+                <input class="form-control mt-3" name="Age" type="number" id="age" onkeyup="validateAge()">
+                <div class="error-message" id="error-age"></div>
+            </td>
+        </tr>
+    </div>
+    <div class="col-md-3">
+        <tr>
+            <th class="h"><label for="PhoneNumber">Phone Number</label></th>
+            <td>
+                <input class="form-control mt-3" name="PhoneNumber" type="tel" id="phone" placeholder="123-456-7890" onkeyup="validatePhoneNumber()">
+                <div class="error-message" id="error-phone"></div>
+            </td>
+        </tr>
+    </div>
+    <tr>
+        <th class="h"><label for="Address">Address</label></th>
+        <td>
+            <textarea class="form-control mt-3" id="address" onkeyup="validateAddress()"></textarea>
+            <div class="error-message" id="error-address"></div>
+        </td>
+    </tr>
+    <div class="col-md-3 mt-3">
+        <tr>
+            <th><label class="d-flex" for="State">State</label></th>
+            <td>
+                <input class="form-control mt-3" name="State" type="text" id="state" onkeyup="validateState()">
+                <div class="error-message" id="error-state"></div>
+            </td>
+        </tr>
+    </div>
+    <div class="col-md-3 mt-3">
+        <tr>
+            <th><label class="d-flex" for="Country">Country</label></th>
+            <td>
+                <input class="form-control mt-3" name="Country" type="text" id="country" onkeyup="validateCountry()">
+                <div class="error-message" id="error-country"></div>
+            </td>
+        </tr>
+    </div>
+    <tr>
+        <th></th>
+        <td>
+            <input class="form-check-input ms-1" name="Declaration" type="checkbox" id="declaration" onclick="validateDeclaration()">
+            <label for="declaration">I hereby declare all the given details are true.</label>
+            <div class="error-message" id="error-declaration"></div>
+        </td>
+    </tr>
+    <tr>
+        <td class="center-button" colspan="2">
+            <button type="submit" class="btn btn-danger">Register</button>
+        </td>
+    </tr>
+</form>
+</table>
+</center>
+
+<script>
+    function validateFirstName() {
+        var firstName = document.getElementById("first-name").value;
+        var errorField = document.getElementById("error-first-name");
+        if (firstName.length === 0) {
+            errorField.innerText = "POOR";
+        } else {
+            errorField.innerText = "GOOD";
+        }
+    }
+
+    function validateLastName() {
+        var lastName = document.getElementById("last-name").value;
+        var errorField = document.getElementById("error-last-name");
+        if (lastName.length === 0) {
+            errorField.innerText = "POOR";
+        } else {
+            errorField.innerText = "GOOD";
+        }
+    }
+
+    function validateEmail() {
+        var email = document.getElementById("email").value;
+        var errorField = document.getElementById("error-email");
+        if (email.length === 0) {
+            errorField.innerText = "POOR";
+        } else {
+            errorField.innerText = "GOOD";
+        }
+    }
+
+    function validatePassword() {
+        var password = document.getElementById("password").value;
+        var errorField = document.getElementById("error-password");
+        var strengthField = document.getElementById("password-strength");
+
+        if (password.length === 0) {
+            errorField.innerText = "POOR";
+            strengthField.innerText = "";
+        } else if (password.length < 8) {
+            errorField.innerText = "POOR";
+            strengthField.innerText = "POOR";
+        } else {
+            errorField.innerText = "GOOD";
+            strengthField.innerText = "GOOD";
+        }
+    }
+
+    function validateRePassword() {
+        var repassword = document.getElementById("repassword").value;
+        var password = document.getElementById("password").value;
+        var errorField = document.getElementById("error-repassword");
+        var matchField = document.getElementById("repassword-match");
+
+        if (repassword.length === 0) {
+            errorField.innerText = "POOR";
+            matchField.innerText = "";
+        } else if (repassword !== password) {
+            errorField.innerText = "MISMATCH";
+            matchField.innerText = "MISMATCH";
+        } else {
+            errorField.innerText = "GOOD";
+            matchField.innerText = "MATCH";
+        }
+    }
+
+    function validateAge() {
+        var age = document.getElementById("age").value;
+        var errorField = document.getElementById("error-age");
+        if (age.length === 0) {
+            errorField.innerText = "POOR";
+        } else {
+            errorField.innerText = "GOOD";
+        }
+    }
+
+    function validatePhoneNumber() {
+        var phone = document.getElementById("phone").value;
+        var errorField = document.getElementById("error-phone");
+        if (phone.length === 0) {
+            errorField.innerText = "POOR";
+        } else {
+            errorField.innerText = "GOOD";
+        }
+    }
+
+    function validateAddress() {
+        var address = document.getElementById("address").value;
+        var errorField = document.getElementById("error-address");
+        if (address.length === 0) {
+            errorField.innerText = "POOR";
+        } else {
+            errorField.innerText = "GOOD";
+        }
+    }
+
+    function validateState() {
+        var state = document.getElementById("state").value;
+        var errorField = document.getElementById("error-state");
+        if (state.length === 0) {
+            errorField.innerText = "POOR";
+        } else {
+            errorField.innerText = "GOOD";
+        }
+    }
+
+   /* function validateCountry() {
+        var country = document.getElementById("country").value;
+        var errorField = document.getElementById("error-country");
+        if (country.length === 0) {
+            errorField.innerText = "POOR";
+        } else {
+            errorField.innerText = "GOOD";
+        }
+    }*/
+
+    function validateLanguages() {
+        var languages = document.querySelectorAll('input[name="Languages"]:checked');
+        var errorField = document.getElementById("error-languages");
+        if (languages.length === 0) {
+            errorField.innerText = "POOR";
+        } else {
+            errorField.innerText = "GOOD";
+        }
+    }
+
+    function validateDeclaration() {
+        var declaration = document.querySelector('input[name="Declaration"]');
+        var errorField = document.getElementById("error-declaration");
+        if (!declaration.checked) {
+            errorField.innerText = "Please accept the declaration";
+        } else {
+            errorField.innerText = "";
+        }
+    }
+</script>
+</body>
+</html>
